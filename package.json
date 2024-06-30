@@ -5,7 +5,37 @@
   "scripts": {
     "start": "webpack serve --config webpack.config.js",
     "electron": "electron .",
+    "build": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "MyElectronApp",
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
   },
   "keywords": [],
   "author": "",
@@ -22,6 +52,7 @@
   },
   "devDependencies": {
     "electron": "^31.1.0",
+    "electron-builder": "^24.13.3",
     "html-webpack-plugin": "^5.6.0",
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4",
